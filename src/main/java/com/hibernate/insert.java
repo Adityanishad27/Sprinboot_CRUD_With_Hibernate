@@ -16,9 +16,9 @@ DBrepositoryOperation dbrepositoryOperation =context.getBean(DBrepositoryOperati
 
 
 	
-	Employee emp= dbrepositoryOperation.insertemployee(8, "Amit","nalapar");
+	Employee emp= dbrepositoryOperation.insertemployee(122, "Adisssst","nalapar");
 	
-	if(emp == null) {
+	if(emp != null) {
 		
 		System.out.println("insert Successfull");
 		

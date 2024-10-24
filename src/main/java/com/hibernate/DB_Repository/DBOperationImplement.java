@@ -39,23 +39,28 @@ public class DBOperationImplement implements DBrepositoryOperation{
 	@Override
 	public Employee  insertemployee(int id, String name, String address) {
 		
+	Employee empp=null;
+		
 		
 		try(Session session = HibernateConfig.getsSessionFactory().openSession()) {
 			
-	
+
 			
-			Employee emp1 = new Employee();
+			Employee emp = new Employee();
 			
-			emp1.setEmpId(id);
-			emp1.setEmpName(name);
-			emp1.setEmpAddress(address);
+			emp.setEmpId(id);
+			emp.setEmpName(name);
+			emp.setEmpAddress(address);
 			
 			Transaction tx = session.beginTransaction();
-			session.save(emp1);
+			session.save(emp);
 			
 			tx.commit();
 			
 			session.close();
+			
+			empp=emp; // if emp not null 
+		
 			
 			
 			
@@ -65,36 +70,41 @@ public class DBOperationImplement implements DBrepositoryOperation{
 			e.printStackTrace();
 		}
 		
-	return null;
+	return empp;
 		
 	}
 	
 	//Delete
 
 	@Override
-	public Employee deleteEmployee(int id) {
-	Employee empp = null;
+	public boolean deleteEmployee(int id) {
+		boolean status = false;
+Employee emp;
 	
 		try(Session session = HibernateConfig.getsSessionFactory().openSession()) {
 			
 			Transaction tx= session.beginTransaction();
 			
-			
-			Employee emp= new Employee();
-			emp.setEmpId(id);
-			
-			session.delete(emp);
-			
-			tx.commit();
-			session.close();
-			
+	emp=session.get(Employee.class, id)	;
+	
+	
+	if(emp != null) {
+		
+		session.delete(emp);
+		tx.commit();
+		session.close();
+		status=true;
+		
+	}
+	  	
+		
 			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return empp;
+		return status;
 		
 	}
 
@@ -127,6 +137,7 @@ public class DBOperationImplement implements DBrepositoryOperation{
 		{
 			e.printStackTrace();
 		}
+		
 		return emp;
 		
 	

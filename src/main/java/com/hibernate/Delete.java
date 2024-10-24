@@ -3,9 +3,7 @@ package com.hibernate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
 
-import com.hibernate.DB_Repository.DBOperationImplement;
 import com.hibernate.DB_Repository.DBrepositoryOperation;
-import com.hibernate.Entities.Employee;
 
 public class Delete {
 
@@ -15,14 +13,14 @@ public class Delete {
 	
 	DBrepositoryOperation  dbrepositoryOperation= context.getBean(DBrepositoryOperation.class);
 	
-Employee emp= dbrepositoryOperation.deleteEmployee(4);
+boolean emp= dbrepositoryOperation.deleteEmployee(122);
 
-if(emp==null) {
-	System.out.println("Delete Successfull");
+if(emp==true) {
+	System.out.println("Delete Successfully");
 	
 }
 else {
-	System.out.println("Deletion failed");
+	System.out.println("Deletion failed....User Not found ");
 }
 
 	}

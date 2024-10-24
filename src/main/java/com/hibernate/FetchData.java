@@ -17,7 +17,7 @@ public class FetchData {
 	
 		DBrepositoryOperation dBrepositoryOperation= context.getBean(DBrepositoryOperation.class);
 		
-	Employee emp=dBrepositoryOperation.getEmpDetail(2);  //L= Long
+	Employee emp=dBrepositoryOperation.getEmpDetail(5);  
 
 
 	if(emp != null) {

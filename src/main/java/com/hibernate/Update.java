@@ -12,15 +12,15 @@ public class Update {
 		
 		DBrepositoryOperation dBrepositoryOperation= context.getBean(DBrepositoryOperation.class);
 		
-		Employee emp= dBrepositoryOperation.updateEmployee(10, "name", "kerakat");
+		Employee emp= dBrepositoryOperation.updateEmployee(122, "namrtutu", "kererurakat");
 		
 		if(emp != null) {
 			
-			System.out.println("Updated Succefully");
+			System.out.println("Updated Successfully");
 			
 		}
 		else {
-			System.out.println("Failed");
+			System.out.println(" User Not found  ....Failed");
 		}
 		
 		

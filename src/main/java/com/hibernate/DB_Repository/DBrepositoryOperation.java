@@ -10,7 +10,8 @@ public interface DBrepositoryOperation {
 	public Employee insertemployee(int id , String name , String address);
 	
 	
-	public Employee deleteEmployee(int id);
+	public boolean deleteEmployee(int id);
+	
 		
 	public Employee updateEmployee(int id,String name , String address);
 	
